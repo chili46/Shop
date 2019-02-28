@@ -20,6 +20,7 @@
             using (var scope = scopeFactory.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<SeedDb>();
+                
                 seeder.SeedAsync().Wait();
             }
         }
