@@ -1,8 +1,7 @@
-﻿
-namespace Shop.UIForms.ViewModels
+﻿namespace Shop.UIForms.ViewModels
 {
-
     using GalaSoft.MvvmLight.Command;
+    using Shop.UIForms.Views;
     using System;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -27,7 +26,7 @@ namespace Shop.UIForms.ViewModels
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "You must enter an email",
+                    "You must enter an email.",
                     "Accept");
                 return;
             }
@@ -36,25 +35,27 @@ namespace Shop.UIForms.ViewModels
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "You must enter an password",
+                    "You must enter a password.",
                     "Accept");
                 return;
             }
 
-            if (!this.Email.Equals("deca5879@hotmail.com") || this.Password.Equals("123456"))
+            if (!this.Email.Equals("deca5879@hotmail.com") || !this.Password.Equals("123456"))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "User or password wrong",
+                    "User or password wrong.",
                     "Accept");
                 return;
             }
 
-            await Application.Current.MainPage.DisplayAlert(
-                    "Ok",
-                    "Fuck yeahhh!",
-                    "Accept");
-            
+            //await Application.Current.MainPage.DisplayAlert(
+            //    "Ok",
+            //    "Fuck yeah!!!",
+            //    "Accept");
+
+            MainViewModel.GetInstance().Products = new ProductsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ProductsPage());
         }
     }
 }
