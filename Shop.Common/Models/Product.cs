@@ -7,6 +7,7 @@ namespace Shop.Common.Models
     public class Product
     {
 		
+		
         [JsonProperty("id")]
         public long Id { get; set; }
 
